@@ -1,6 +1,6 @@
 const SeasonTotal = {
     getScoreForSeason: function(scoringFunction, results) {
-        return results.map(scoringFunction).reduce((a, b) => a + b);
+        return results.map(scoringFunction.pointsFor.bind(scoringFunction)).reduce((a, b) => a + b);
     }
 }
 

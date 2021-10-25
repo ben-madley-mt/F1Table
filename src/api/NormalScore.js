@@ -1,3 +1,6 @@
+import Utility from "./Utility";
+
+
 const NormalScore = {
     points: {
         '1': 25,
@@ -11,21 +14,15 @@ const NormalScore = {
         '9': 2,
         '10': 1,
     },
-    pointsFor: function(rawPosition) {
-        const isFastestLap = this.isFastestLap(rawPosition);
-        const position = this.extractPosition(rawPosition);
+    pointsFor: function (rawPosition) {
+        const isFastestLapPoint = Utility.isFastestLap(rawPosition);
+        const position = Utility.extractPosition(rawPosition);
 
         if (position in this.points) {
-            return this.points[position] + isFastestLap;
+            return this.points[position] + isFastestLapPoint;
         } else {
             return 0;
         }
-    },
-    isFastestLap: function(rawPosition) {
-        return rawPosition.includes('F');
-    },
-    extractPosition: function(rawPosition) {
-        return parseInt(rawPosition);
     }
 }
 
