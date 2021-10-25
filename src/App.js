@@ -4,6 +4,7 @@ import ChampionshipTable from './ChampionshipTable';
 import seasonResults from './api/2020Results';
 import SeasonTotal from './api/SeasonTotal';
 import NormalScore from './api/NormalScore';
+import BestRaceTotal from './api/BestRaceTotal';
 
 function App() {
   return (
