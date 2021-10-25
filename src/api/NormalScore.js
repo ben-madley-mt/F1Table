@@ -1,8 +1,8 @@
 import Utility from "./Utility";
 
 
-const NormalScore = {
-    points: {
+class NormalScore {
+    points = {
         '1': 25,
         '2': 18,
         '3': 15,
@@ -13,8 +13,9 @@ const NormalScore = {
         '8': 4,
         '9': 2,
         '10': 1,
-    },
-    pointsFor: function (rawPosition) {
+    };
+
+    pointsFor(rawPosition) {
         const isFastestLapPoint = Utility.isFastestLap(rawPosition);
         const position = Utility.extractPosition(rawPosition);
 

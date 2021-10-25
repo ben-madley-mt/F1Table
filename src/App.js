@@ -8,7 +8,7 @@ import NormalScore from './api/NormalScore';
 function App() {
   return (
     <div className="App">
-      <ChampionshipTable results={seasonResults} totaler={SeasonTotal} scorer={NormalScore}></ChampionshipTable>
+      <ChampionshipTable results={seasonResults} totaler={new SeasonTotal()} scorer={new NormalScore()}></ChampionshipTable>
     </div>
   );
 }

@@ -34,7 +34,7 @@ test('Test table ordered by points', () => {
   const testScorer = {pointsFor: (position) => 3 - parseInt(position)};
 
   render(
-    <ChampionshipTable results={smallTable} scorer={testScorer} totaler={SeasonTotal}></ChampionshipTable>,
+    <ChampionshipTable results={smallTable} scorer={testScorer} totaler={new SeasonTotal()}></ChampionshipTable>,
   );
 
   const output = getTableAsArray();
