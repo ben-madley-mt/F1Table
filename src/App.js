@@ -28,7 +28,10 @@ class App extends React.Component {
       case "10":
         this.totaler = new BestRaceTotal(10);
         break;
-
+      default:
+        this.totaler = new SeasonTotal();
+        break;
+  
     }
   }
 

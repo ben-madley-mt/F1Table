@@ -1,9 +1,10 @@
-const isFastestLap = function(rawPosition) {
-    return rawPosition.includes('F');
+const Utility = {
+    isFastestLap: function (rawPosition) {
+        return rawPosition.includes('F');
+    },
+    extractPosition: function (rawPosition) {
+        return parseInt(rawPosition);
+    }
 }
 
-const extractPosition = function(rawPosition) {
-    return parseInt(rawPosition);
-}
-
-export default {isFastestLap, extractPosition};
+export default Utility;
