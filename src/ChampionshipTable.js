@@ -25,7 +25,7 @@ class ChampionshipTable extends React.Component {
 
     table.sort((a, b) => b[seasonLength + 1] - a[seasonLength + 1])
 
-    table = table.map((row, i) => <tr key={i}>{row.map((cell, i) => <td key={i}>{cell}</td>)}</tr>)
+    table = table.map((row, i) => <tr key={row[0]}>{row.map((cell, i) => <td key={i}>{cell}</td>)}</tr>)
 
     return (
       <table data-testid="test-table">
