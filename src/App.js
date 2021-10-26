@@ -34,7 +34,6 @@ class App extends React.Component {
       default:
         this.totaler = new SeasonTotal();
         break;
-  
     }
   }
 
