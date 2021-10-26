@@ -5,6 +5,7 @@ import SeasonTotal from './api/SeasonTotal';
 import NormalScore from './api/NormalScore';
 import BestRaceTotal from './api/BestRaceTotal';
 import React from 'react';
+import Utility from './api/Utility';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <ChampionshipTable results={seasonResults} totaler={this.totaler} scorer={new NormalScore()}></ChampionshipTable>
+        <ChampionshipTable results={seasonResults} totaler={this.totaler} scorer={new NormalScore(Utility.pointsSystems.standard, 1)}></ChampionshipTable>
         <label htmlFor="totaler-select">Totaler</label>
         <select name="totaler-select" id="totaler-select" value={this.state.value} onChange={this.handleChange}>
           <option value="all">All Results</option>

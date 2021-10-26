@@ -2,25 +2,17 @@ import Utility from "./Utility";
 
 
 class NormalScore {
-    points = {
-        '1': 25,
-        '2': 18,
-        '3': 15,
-        '4': 12,
-        '5': 10,
-        '6': 8,
-        '7': 6,
-        '8': 4,
-        '9': 2,
-        '10': 1,
-    };
+    constructor(pointsSystem, pointsForFastestLap) {
+        this.pointsSystem = pointsSystem;
+        this.pointsForFastestLap = pointsForFastestLap;
+    }
 
     pointsFor(rawPosition) {
         const isFastestLapPoint = Utility.isFastestLap(rawPosition);
         const position = Utility.extractPosition(rawPosition);
 
-        if (position in this.points) {
-            return this.points[position] + isFastestLapPoint;
+        if (position in this.pointsSystem) {
+            return this.pointsSystem[position] + (isFastestLapPoint ? this.pointsForFastestLap : 0);
         } else {
             return 0;
         }
