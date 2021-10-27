@@ -5,53 +5,37 @@ class Countback {
         positions = positions.map((positionsList) => {
             return {
                 "driver": positionsList[0],
-                "positions": positionsList.slice(1, seasonLength + 1).map((x) => parseInt(x)),
+                "positionsRank": positionsList.slice(1, seasonLength + 1).map((x) => parseInt(x)),
                 "pointsTotal": positionsList[seasonLength + 1],
-                "positionsAchieved": this.getPositionsAchieved(positionsList.slice(1, seasonLength + 1).map((x) => parseInt(x))),
                 "original": positionsList
             }
         });
 
-        positions.sort(function (a, b) {
-            if (b.pointsTotal - a.pointsTotal !== 0) {
-                return b.pointsTotal - a.pointsTotal;
-            } else {
-
-                for (let i = 0; i < Math.min(a.positionsAchieved.length, b.positionsAchieved.length); i++) {
-                    if (b.positionsAchieved[i] - a.positionsAchieved[i] !== 0) {
-                        return b.positionsAchieved[i] - a.positionsAchieved[i]
-                    }
-                }
-
-                return b.positionsAchieved.length - a.positionsAchieved.length
+        positions.sort((a, b) => {
+            if (b.pointsTotal !== a.pointsTotal) {
+                return b.pointsTotal - a.pointsTotal
             }
-        })
 
+            for (let i = 0; i < a.positionsRank.length; i++) {
+                if (a.positionsRank[i] !== b.positionsRank[i]) {
+                    if (isNaN(a.positionsRank[i])) {
+                        return 1
+                    }
+                    if (isNaN(b.positionsRank[i])) {
+                        return -1
+                    }
+                    
+                    return a.positionsRank[i] - b.positionsRank[i];
+                }
+            }
+
+            return 0
+        });
+        
         return positions.map((positionsObject) => positionsObject.original);
     }
 
-    getPositionsAchieved(positions) {
-        var positionCounts = [];
-        positions.forEach(element => {
-            if (isNaN(element)) {
-                return;
-            }
-
-            if (element in positionCounts) {
-                positionCounts[element] += 1;
-            } else {
-                positionCounts[element] = 1;
-            }
-        });
-
-        for (let i = 0; i < positionCounts.length; i++) {
-            if (!positionCounts[i]) {
-                positionCounts[i] = 0;
-            }
-        }
-
-        return positionCounts;
-    }
 }
 
 export default Countback;
+

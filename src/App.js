@@ -1,7 +1,7 @@
 import './App.css';
 import ChampionshipTable from './ChampionshipTable';
 import seasonResults from './api/2020Results';
-import React, { useState } from 'react';
+import React from 'react';
 import useMethodologyChange from './useMethodologyChange';
 import Countback from './api/Countback';
 
