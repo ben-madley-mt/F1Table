@@ -25,7 +25,8 @@ function ChampionshipTable(props) {
     table.push(row)
   }
 
-  table.sort((a, b) => b[seasonLength + 1] - a[seasonLength + 1])
+  table = props.orderer.getOrder(table)
+
 
   table = table.map((row, i) => <tr key={row[0]}>{row.map((cell, i) => <td key={i}>{cell}</td>)}</tr>)
 

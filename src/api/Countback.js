@@ -27,8 +27,6 @@ class Countback {
             }
         })
 
-        console.log(positions);
-
         return positions.map((positionsObject) => positionsObject.original);
     }
 
@@ -51,8 +49,6 @@ class Countback {
                 positionCounts[i] = 0;
             }
         }
-
-        console.log(positionCounts);
 
         return positionCounts;
     }

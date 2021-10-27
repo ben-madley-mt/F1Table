@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import Countback from './api/Countback';
 import SeasonTotal from './api/SeasonTotal';
 import ChampionshipTable from './ChampionshipTable';
 
@@ -13,7 +14,7 @@ test('Test table generation', () => {
   const testTotaler = {getScoreForSeason: (allPositions) => 1234};
 
   render(
-    <ChampionshipTable results={smallTable} scorer={testScorer} totaler={testTotaler}></ChampionshipTable>,
+    <ChampionshipTable results={smallTable} scorer={testScorer} totaler={testTotaler} orderer={new Countback()}></ChampionshipTable>,
   );
 
   const output = getTableAsArray();
@@ -34,7 +35,7 @@ test('Test table ordered by points', () => {
   const testScorer = {pointsFor: (position) => 3 - parseInt(position)};
 
   render(
-    <ChampionshipTable results={smallTable} scorer={testScorer} totaler={new SeasonTotal()}></ChampionshipTable>,
+    <ChampionshipTable results={smallTable} scorer={testScorer} totaler={new SeasonTotal()} orderer={new Countback()}></ChampionshipTable>,
   );
 
   const output = getTableAsArray();
