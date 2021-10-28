@@ -1,12 +1,9 @@
 function ChampionshipTable(props) {
-  
+
   const seasonResults = props.results;
 
   let header = createHeader();
   let table = createBody();
-  
-  header = header.map((cell) => <th key={cell}>{cell}</th>);
-  table = table.map((row, i) => <tr key={row[0]}>{row.map((cell, i) => <td key={i}>{cell}</td>)}</tr>)
 
   return (
     <table data-testid="test-table">
@@ -27,6 +24,8 @@ function ChampionshipTable(props) {
     }
     header.push('Points');
 
+    header = header.map((cell) => <th key={cell}>{cell}</th>);
+
     return header;
   }
 
@@ -35,9 +34,9 @@ function ChampionshipTable(props) {
     for (const driver in seasonResults) {
       const results = seasonResults[driver].slice();
 
-      driverRestultsAndTotals[driver] = { 
-        positions: results, 
-        total: calculateDriverScore(results) 
+      driverRestultsAndTotals[driver] = {
+        positions: results,
+        total: calculateDriverScore(results)
       };
     }
 
@@ -46,6 +45,9 @@ function ChampionshipTable(props) {
     let table = driverOrder.map(
       (driver) => [driver].concat(driverRestultsAndTotals[driver].positions, [driverRestultsAndTotals[driver].total])
     );
+
+    table = table.map((row) => <tr key={row[0]}>{row.map((cell, i) => <td key={i}>{cell}</td>)}</tr>)
+
     return table;
   }
 
