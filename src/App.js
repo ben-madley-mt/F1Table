@@ -3,8 +3,6 @@ import ChampionshipTable from './ChampionshipTable';
 import seasonResults from './api/2020Results';
 import React from 'react';
 import useMethodologyChange from './useMethodologyChange';
-import Countback from './api/Countback';
-import Alphabetical from './api/Alphabetical';
 
 function App() {
   const [totaler, scorer, orderer, handleTotalerChange, handleScorerChange, handleOrdererChange] = useMethodologyChange();
@@ -27,6 +25,7 @@ function App() {
         <option value="6">Top 6</option>
         <option value="6trad">Top 6 (traditional)</option>
         <option value="5">Top 5</option>
+        <option value="20">All 20 drivers score (FL)</option>
         <option value="fl">FL Only</option>
       </select>
 
