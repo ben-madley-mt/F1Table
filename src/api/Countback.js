@@ -1,6 +1,6 @@
 class Countback {
-    getOrder(newPositions) {
-        let positions = this.formatData(newPositions);
+    getOrder(positionsObject) {
+        let positions = this.formatData(positionsObject);
 
         positions.sort((a, b) => {
             if (b.pointsTotal !== a.pointsTotal) {
@@ -28,19 +28,13 @@ class Countback {
 
 
     formatData(newPositions) {
-        let positions = Object.entries(newPositions).map((a) => [a[0]].concat(a[1]));
-
-        const seasonLength = positions[0].length - 2;
-
-        positions = positions.map((positionsList) => {
+        return Object.entries(newPositions).map((positionsList) => {
             return {
                 "driver": positionsList[0],
-                "positionsRank": positionsList.slice(1, seasonLength + 1).map((x) => parseInt(x)),
-                "pointsTotal": positionsList[seasonLength + 1],
-                "original": positionsList
+                "positionsRank": positionsList[1].positions.map((x) => parseInt(x)),
+                "pointsTotal": positionsList[1].total,
             };
         });
-        return positions;
     }
 }
 

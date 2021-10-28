@@ -2,7 +2,7 @@ import Alphabetical from './Alphabetical';
 
 test('Alphabetical sorts alphabetically', () => {
   expect(new Alphabetical().getOrder({
-    'b': ['position', 3],
-    'a': ['position', 3],
+    'b': {positions:['position'], total: 4},
+    'a': {positions:['position'], total: 4},
   })).toStrictEqual(['a', 'b']);
 });

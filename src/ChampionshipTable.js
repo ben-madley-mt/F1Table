@@ -19,14 +19,13 @@ function ChampionshipTable(props) {
   let driverRestultsAndTotals = {};
   for (const driver in seasonResults) {
     const results = seasonResults[driver].slice();
-    results.push(calculateDriverScore(results));
 
-    driverRestultsAndTotals[driver] = results
+    driverRestultsAndTotals[driver] = {positions:results, total: calculateDriverScore(results)}
   }
 
   const driverOrder = props.orderer.getOrder(driverRestultsAndTotals)
 
-  let table = driverOrder.map((driver) => [driver].concat(driverRestultsAndTotals[driver]));
+  let table = driverOrder.map((driver) => [driver].concat(driverRestultsAndTotals[driver].positions, [driverRestultsAndTotals[driver].total]));
 
   table = table.map((row, i) => <tr key={row[0]}>{row.map((cell, i) => <td key={i}>{cell}</td>)}</tr>)
 
