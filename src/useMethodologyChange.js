@@ -1,5 +1,7 @@
 import { useState } from "react";
+import Alphabetical from "./api/Alphabetical";
 import BestRaceTotal from "./api/BestRaceTotal";
+import Countback from "./api/Countback";
 import NormalScore from "./api/NormalScore";
 import SeasonTotal from "./api/SeasonTotal";
 import Utility from './api/Utility';
@@ -7,6 +9,7 @@ import Utility from './api/Utility';
 function useMethodologyChange() {
     const [totaler, setTotaler] = useState(new SeasonTotal())
     const [scorer, setScorer] = useState(new NormalScore(Utility.pointsSystems.top10, 1))
+    const [orderer, setOrderer] = useState(new Countback())
   
     function handleTotalerChange(event) {
       // this.setState({ totalValue: event.target.value });
@@ -56,8 +59,23 @@ function useMethodologyChange() {
       }
     }
   
+    function handleOrdererChange(event) {
+      // this.setState({ totalValue: event.target.value });
+      switch (event.target.value) {
+        case "position":
+          setOrderer(new Countback());
+          break;
+        case "name":
+          setOrderer(new Alphabetical());
+          break;
+        default:
+          setOrderer(new Countback());
+          break;
+      }
+    }
+
   
-    return [totaler, scorer, handleTotalerChange, handleScorerChange];
+    return [totaler, scorer, orderer, handleTotalerChange, handleScorerChange, handleOrdererChange];
   }
   
 

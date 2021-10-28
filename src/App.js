@@ -4,13 +4,14 @@ import seasonResults from './api/2020Results';
 import React from 'react';
 import useMethodologyChange from './useMethodologyChange';
 import Countback from './api/Countback';
+import Alphabetical from './api/Alphabetical';
 
 function App() {
-  const [totaler, scorer, handleTotalerChange, handleScorerChange] = useMethodologyChange();
+  const [totaler, scorer, orderer, handleTotalerChange, handleScorerChange, handleOrdererChange] = useMethodologyChange();
 
   return (
     <div className="App">
-      <ChampionshipTable results={seasonResults} totaler={totaler} scorer={scorer} orderer={new Countback()}></ChampionshipTable>
+      <ChampionshipTable results={seasonResults} totaler={totaler} scorer={scorer} orderer={orderer}></ChampionshipTable>
       <label htmlFor="totaler-select">Totaler</label>
       <select name="totaler-select" id="totaler-select" onChange={handleTotalerChange}>
         <option value="all">All Results</option>
@@ -27,6 +28,12 @@ function App() {
         <option value="6trad">Top 6 (traditional)</option>
         <option value="5">Top 5</option>
         <option value="fl">FL Only</option>
+      </select>
+
+      <label htmlFor="orderer-select">Orderer</label>
+      <select name="orderer-select" id="orderer-select" onChange={handleOrdererChange}>
+        <option value="position">Position</option>
+        <option value="name">Name</option>
       </select>
     </div>
   );
