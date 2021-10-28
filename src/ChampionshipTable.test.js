@@ -26,7 +26,7 @@ test('Test table generation', () => {
   ]);
 });
 
-test('Test table ordered by points', () => {
+test('Test table ordered', () => {
   const smallTable = {
     "worst": ["2", "1", "2"],
     "best": ["1", "2", "1"],

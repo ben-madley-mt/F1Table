@@ -1,15 +1,6 @@
 class Countback {
-    getOrder(positions) {
-        const seasonLength = positions[0].length - 2
-
-        positions = positions.map((positionsList) => {
-            return {
-                "driver": positionsList[0],
-                "positionsRank": positionsList.slice(1, seasonLength + 1).map((x) => parseInt(x)),
-                "pointsTotal": positionsList[seasonLength + 1],
-                "original": positionsList
-            }
-        });
+    getOrder(newPositions) {
+        let positions = this.formatData(newPositions);
 
         positions.sort((a, b) => {
             if (b.pointsTotal !== a.pointsTotal) {
@@ -32,9 +23,25 @@ class Countback {
             return 0
         });
         
-        return positions.map((positionsObject) => positionsObject.original);
+        return positions.map((positionsObject) => positionsObject.driver);
     }
 
+
+    formatData(newPositions) {
+        let positions = Object.entries(newPositions).map((a) => [a[0]].concat(a[1]));
+
+        const seasonLength = positions[0].length - 2;
+
+        positions = positions.map((positionsList) => {
+            return {
+                "driver": positionsList[0],
+                "positionsRank": positionsList.slice(1, seasonLength + 1).map((x) => parseInt(x)),
+                "pointsTotal": positionsList[seasonLength + 1],
+                "original": positionsList
+            };
+        });
+        return positions;
+    }
 }
 
 export default Countback;
