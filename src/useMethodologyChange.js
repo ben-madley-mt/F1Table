@@ -53,6 +53,9 @@ function useMethodologyChange() {
         case "fl":
           setScorer(new NormalScore(Utility.pointsSystems.none, 1));
           break;
+        case "countback":
+          setScorer(new NormalScore(Utility.pointsSystems.none, 0));
+          break;
         case "20":
           setScorer(new NormalScore(Utility.pointsSystems.top20, 1));
           break;  
