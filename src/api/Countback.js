@@ -10,19 +10,19 @@ class Countback {
             for (let i = 0; i < a.positionsRank.length; i++) {
                 if (a.positionsRank[i] !== b.positionsRank[i]) {
                     if (isNaN(a.positionsRank[i])) {
-                        return 1
+                        return 1;
                     }
                     if (isNaN(b.positionsRank[i])) {
-                        return -1
+                        return -1;
                     }
-                    
+
                     return a.positionsRank[i] - b.positionsRank[i];
                 }
             }
 
             return 0
         });
-        
+
         return positions.map((positionsObject) => positionsObject.driver);
     }
 
@@ -31,7 +31,7 @@ class Countback {
         return Object.entries(newPositions).map((positionsList) => {
             return {
                 "driver": positionsList[0],
-                "positionsRank": positionsList[1].positions.map((x) => parseInt(x)),
+                "positionsRank": positionsList[1].positions.map((x) => parseInt(x)).filter(position => !isNaN(position)).sort((a, b) => a - b),
                 "pointsTotal": positionsList[1].total,
             };
         });

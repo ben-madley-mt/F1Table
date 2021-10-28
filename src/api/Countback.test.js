@@ -23,8 +23,8 @@ test('Countback sorts by 2nd best position if same 1st best position', () => {
 
 test('Countback works when results are not in order', () => {
   expect(new Countback().getOrder({
-    'worst': { positions: ['2', '1'], total: 4 },
-    'best': { positions: ['1', '1'], total: 4 },
+    'worst': { positions: ['1', '2', '3'], total: 4 },
+    'best': { positions: ['2', '1', '1'], total: 4 },
   })).toStrictEqual(['best', 'worst']);
 });
 
@@ -61,5 +61,19 @@ test('empty count as worst possible score', () => {
   expect(new Countback().getOrder({
     'worst': { positions: [''], total: 4 },
     'best': { positions: ['1'], total: 4 },
+  })).toStrictEqual(['best', 'worst']);
+});
+
+test('Countback works when results are two digits', () => {
+  expect(new Countback().getOrder({
+    'worst': { positions: ['1', '4', '5'], total: 4 },
+    'best': { positions: ['1', '11', '3'], total: 4 },
+  })).toStrictEqual(['best', 'worst']);
+});
+
+test('First race retirement', () => {
+  expect(new Countback().getOrder({
+    'worst': { positions: ['2', '2'], total: 4 },
+    'best': { positions: ['Ret', '1'], total: 4 },
   })).toStrictEqual(['best', 'worst']);
 });
