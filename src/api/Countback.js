@@ -9,9 +9,6 @@ class Countback {
 
             for (let i = 0; i < a.positionsRank.length; i++) {
                 if (a.positionsRank[i] !== b.positionsRank[i]) {
-                    if (isNaN(a.positionsRank[i])) {
-                        return 1;
-                    }
                     if (isNaN(b.positionsRank[i])) {
                         return -1;
                     }
@@ -23,7 +20,7 @@ class Countback {
             return 0
         });
 
-        return positions.map((positionsObject) => positionsObject.driver);
+        return positions.map((position) => position.driver);
     }
 
 

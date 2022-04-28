@@ -1,9 +1,16 @@
 import Countback from './Countback';
 
-test('Countback sorts by last column', () => {
+test('Countback sorts by highest total', () => {
   expect(new Countback().getOrder({
     'worst': { positions: ['2', '1', '2'], total: 4 },
     'best': { positions: ['1', '2', '1'], total: 5 },
+  })).toStrictEqual(['best', 'worst']);
+});
+
+test('Countback sorts by highest total regardless of positions', () => {
+  expect(new Countback().getOrder({
+    'best': { positions: ['3', '3', '3'], total: 5 },
+    'worst': { positions: ['1', '1', '1'], total: 4 },
   })).toStrictEqual(['best', 'worst']);
 });
 
