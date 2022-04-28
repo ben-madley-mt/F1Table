@@ -147,5 +147,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@stryker-mutator/core": "^5.6.1",
+    "@stryker-mutator/jest-runner": "^5.6.1"
   }
 }
