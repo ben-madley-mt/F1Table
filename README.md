@@ -29,6 +29,10 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run coverage`
+
+Get standard test coverage.
+
 ### `npm run mutate`
 
 Run the mutation script and generate a report in the reports directory.
