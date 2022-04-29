@@ -9,5 +9,6 @@
   ],
   "coverageAnalysis": "off",
   "jest": {},
-  "ignorePatterns": ["2020Results.js", "reportWebVitals.js", "index.js", "App.js", "useMethodologyChange.js"]
+  "ignorePatterns": ["2020Results.js", "reportWebVitals.js", "index.js", "App.js", "useMethodologyChange.js"],
+  "disableBail": true
 }
